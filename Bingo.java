@@ -4,19 +4,25 @@
 // Repeat until sorted
 
 public class Bingo {
+	static int bingo;
+	static int nextBingo;
+	
 	static int[] sort(int[] input) {
-		int bingo = input[0];
-		
-		// Find the smallest element
-		for(int i = 0; i < input.length; i++) {
-			if(input[i] < bingo) {
-				bingo = input[i];
-				System.out.println(bingo); 
-			}
-		}
+		setBingo(input);
+		System.out.println(bingo);
+		System.out.println(nextBingo);
 		
 		return input;
 	}
+	
+	// Set bingo and nextBingo to the min and max values
+	static void setBingo(int[] arr) {
+		for(int i = 1; i < arr.length; i++) {
+			bingo = Math.min(bingo, arr[i]);
+			nextBingo = Math.max(nextBingo, arr[i]);
+		}
+	}
+	
 	public static void main(String[] args) {
 		int[] arr =  { 1, 6, 7, 4, 4, 7, 2, 9 };
 		int n = arr.length;
